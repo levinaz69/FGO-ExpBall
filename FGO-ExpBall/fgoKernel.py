@@ -32,7 +32,7 @@ class ExpBall:
                     Detect.cache.save('fgoLog/Special')
                     logger.warning(f'Special Summoned {t[0]}')
                     Button(t[1]).click(2)
-                    Button((32,180)).click(1)
+                    Button((32,180)).click(1)   # Lock
                     if self.special.setdefault(t[0],0)==1:
                         raise ScriptStop(f'Special Summoned {t[0]} count achieved')
                     self.special[t[0]]-=1
@@ -51,20 +51,20 @@ class ExpBall:
                     SORT_FILTER_ON.click(.8)
                 SORT_SUBMIT.click(.8)
             self.sell()
-            logger.info('Sell reisou')
-            SELECT_REISOU.click(2)
-            if self.runOnce: # 每行7个 3星 智能筛选
-                while not SELECT_GIRD.appear():
-                    SELECT_GIRD.click(2)
-                FILTER_FILTER.click(.8)
-                FILTER_RESET.click(.5)
-                FILTER_STAR_3.click(.5)
-                FILTER_SUBMIT.click(.8)
-                SORT_SORT.click(.8)
-                while not SORT_FILTER_ON.appear():
-                    SORT_FILTER_ON.click(.8)
-                SORT_SUBMIT.click(.8)
-            self.sell()
+            # logger.info('Sell reisou')
+            # SELECT_REISOU.click(2)
+            # if self.runOnce: # 每行7个 3星 智能筛选
+            #     while not SELECT_GIRD.appear():
+            #         SELECT_GIRD.click(2)
+            #     FILTER_FILTER.click(.8)
+            #     FILTER_RESET.click(.5)
+            #     FILTER_STAR_3.click(.5)
+            #     FILTER_SUBMIT.click(.8)
+            #     SORT_SORT.click(.8)
+            #     while not SORT_FILTER_ON.appear():
+            #         SORT_FILTER_ON.click(.8)
+            #     SORT_SUBMIT.click(.8)
+            # self.sell()
             logger.info('Sell command code')
             SELECT_CODE.click(2)
             if self.runOnce: # 每行7个 12星
@@ -122,6 +122,7 @@ class ExpBall:
                 FILTER_RESET.click(.5)
                 FILTER_STAR_1.click(.5)
                 FILTER_STAR_2.click(.5)
+                FILTER_STAR_3.click(.5)  # Append star 3
                 FILTER_SUBMIT.click(.8)
                 SORT_SORT.click(.8)
                 SORT_BYRANK.click(.5)
@@ -151,15 +152,15 @@ class ExpBall:
             BACK.wait()
             ARCHIVE_ARCHIVE.click(3)
             SELECT_FINISH.wait()
-            if self.runOnce: # 每行7个 经验值 芙芙
+            if self.runOnce: # 每行7个 经验值 芙芙, 需手动在筛选中添加
                 while not SELECT_GIRD.appear():
                     SELECT_GIRD.click(2)
-                FILTER_FILTER.click(.8)
-                FILTER_RESET.click(.5)
-                FILTER_SCROLL.click(.5)
-                FILTER_EXP.click(.5)
-                FILTER_FOU.click(.5)
-                FILTER_SUBMIT.click(.8)
+                # FILTER_FILTER.click(.8)
+                # FILTER_RESET.click(.5)
+                # FILTER_SCROLL.click(.5)
+                # FILTER_EXP.click(.5)
+                # FILTER_FOU.click(.5)
+                # FILTER_SUBMIT.click(.8)
             while True:
                 self.selectAll()
                 if SELECT_FINISH.appear():
